@@ -1,7 +1,7 @@
 <script setup></script>
 
 <template>
-  <RouterView></RouterView>
+  <div>我是分类</div>
 </template>
 
 <style scoped lang="scss"></style>
