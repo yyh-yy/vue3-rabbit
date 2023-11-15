@@ -1,7 +1,9 @@
 <script setup></script>
 
 <template>
-  <div>首页</div>
+  <div>
+    <el-button type="primary">sss</el-button>
+  </div>
 </template>
 
 <style scoped lang="scss"></style>
