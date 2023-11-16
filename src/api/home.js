@@ -2,8 +2,9 @@ import http from '@/utils/http'
 
 
 //获取 banner
-export const getBanner = () => {
-    return http({ url: 'home/banner' })
+export const getBanner = (param = {}) => {
+    const { distributionSite = '1' } = param
+    return http({ url: 'home/banner', params: { distributionSite } })
 }
 
 /**

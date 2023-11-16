@@ -1,8 +1,10 @@
 <script setup>
 import { useScroll } from "@vueuse/core";
 import { useCategoryStore } from "@/stores/category";
+import { useRoute } from "vue-router";
 const categoryStore = useCategoryStore();
 const { y } = useScroll(window);
+const route = useRoute();
 </script>
 
 <template>
@@ -11,12 +13,19 @@ const { y } = useScroll(window);
       <RouterLink class="logo" to="/" />
       <!-- 导航区域 -->
       <ul class="app-header-nav">
+        <li class="home">
+          <RouterLink to="/" :active-class="route.path === '/' ? 'active' : ''"
+            >首页</RouterLink
+          >
+        </li>
         <li
           class="home"
           v-for="item in categoryStore.categoryList"
           :key="item.id"
         >
-          <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink :to="`/category/${item.id}`" active-class="active">{{
+            item.name
+          }}</RouterLink>
         </li>
       </ul>
 

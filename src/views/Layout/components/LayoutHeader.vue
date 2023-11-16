@@ -1,10 +1,12 @@
 <script setup>
 import { onMounted, ref } from "vue";
 import { useCategoryStore } from "@/stores/category";
+import { useRoute } from "vue-router";
 const categoryStore = useCategoryStore();
 onMounted(() => {
   categoryStore.getCategory();
 });
+const route = useRoute();
 </script>
 
 <template>
@@ -14,12 +16,19 @@ onMounted(() => {
         <RouterLink to="/">小兔鲜</RouterLink>
       </h1>
       <ul class="app-header-nav">
+        <li class="home">
+          <RouterLink to="/" :active-class="route.path === '/' ? 'active' : ''"
+            >首页</RouterLink
+          >
+        </li>
         <li
           class="home"
           v-for="item in categoryStore.categoryList"
           :key="item.id"
         >
-          <RouterLink to="/">{{ item.name }}</RouterLink>
+          <RouterLink :to="`/category/${item.id}`" active-class="active">{{
+            item.name
+          }}</RouterLink>
         </li>
       </ul>
       <div class="search">
