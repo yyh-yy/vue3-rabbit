@@ -26,9 +26,6 @@ export const findNewAPI = () => {
 export const getHotAPI = () => {
     return http({
         url: 'home/hot',
-        method: 'get',
-        data: {}
-
     })
 }
 
