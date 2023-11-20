@@ -5,11 +5,12 @@ import App from './App.vue'
 import router from './router/index'
 import '@/styles/common.scss'
 import { lazyPlugin } from '@/directives/index'
-
+import { componentPlugin } from '@/components'
 const app = createApp(App)
 
 app.use(createPinia()).use(router)
 app.use(lazyPlugin)
+app.use(componentPlugin)
 app.mount('#app')
 
 
