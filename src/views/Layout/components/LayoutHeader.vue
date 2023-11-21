@@ -2,6 +2,8 @@
 import { onMounted, ref } from "vue";
 import { useCategoryStore } from "@/stores/category";
 import { useRoute } from "vue-router";
+import HeaderCart from "./HeaderCart.vue";
+import HeaderCartVue from "./HeaderCart.vue";
 const categoryStore = useCategoryStore();
 onMounted(() => {
   categoryStore.getCategory();
@@ -36,6 +38,7 @@ const route = useRoute();
         <input type="text" placeholder="搜一搜" />
       </div>
       <!-- 头部购物车 -->
+      <HeaderCart />
     </div>
   </header>
 </template>

@@ -6,9 +6,13 @@ import router from './router/index'
 import '@/styles/common.scss'
 import { lazyPlugin } from '@/directives/index'
 import { componentPlugin } from '@/components'
-const app = createApp(App)
+import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 
-app.use(createPinia()).use(router)
+const app = createApp(App)
+const pinia = createPinia();
+pinia.use(piniaPluginPersistedstate);
+app.use(router)
+app.use(pinia)
 app.use(lazyPlugin)
 app.use(componentPlugin)
 app.mount('#app')
