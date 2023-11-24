@@ -9,7 +9,8 @@ export const useCartStore = defineStore('cart', () => {
 
     const addCart = async (goods) => {
         const { skuId, count } = goods
-        if (isLogin) {
+        if (isLogin.value) {
+
             await insertCartAPI({ skuId, count })
             updataNewList()
         } else {
@@ -23,7 +24,7 @@ export const useCartStore = defineStore('cart', () => {
 
     }
     const delCart = async (skuId) => {
-        if (isLogin) {
+        if (isLogin.value) {
             await delCartAPI([skuId])
             updataNewList()
         } else {
@@ -34,6 +35,9 @@ export const useCartStore = defineStore('cart', () => {
     const updataNewList = async () => {
         const res = await findNewCartListAPI()
         cartList.value = res.result
+    }
+    const clearCartList = () => {
+        cartList.value = []
     }
     const allCount = computed(() => {
         return cartList.value.reduce((a, c) => a + c.count, 0)
@@ -62,7 +66,9 @@ export const useCartStore = defineStore('cart', () => {
         isAll,
         allCheck,
         selectedCount,
-        selectedPrice
+        selectedPrice,
+        clearCartList,
+        updataNewList
     }
 }, {
     persist: true

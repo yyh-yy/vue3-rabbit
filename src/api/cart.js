@@ -30,3 +30,11 @@ export const delCartAPI = (ids) => {
         }
     })
 }
+
+export const mergeCartAPI = (data) => {
+    return http({
+        url: '/member/cart/merge',
+        method: 'POST',
+        data
+    })
+}
